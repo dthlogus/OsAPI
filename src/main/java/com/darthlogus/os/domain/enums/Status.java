@@ -1,4 +1,4 @@
-package com.darthlogus.os.enums;
+package com.darthlogus.os.domain.enums;
 
 public enum Status {
 	ABERTO (0, "ABERTO"),
