@@ -1,6 +1,7 @@
 package com.darthlogus.os.services;
 
 import com.darthlogus.os.domain.Tecnico;
+import com.darthlogus.os.dtos.TecnicoDTO;
 import com.darthlogus.os.repositories.TecnicoRepository;
 import com.darthlogus.os.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,5 +23,9 @@ public class TecnicoService {
 
 	public List<Tecnico> findAll() {
 		return tecnicoRepository.findAll();
+	}
+	
+	public Tecnico create(TecnicoDTO tecnicoDto) {
+		return tecnicoRepository.save(new Tecnico(null, tecnicoDto.getNome(), tecnicoDto.getCpf(), tecnicoDto.getTelefone()));
 	}
 }
