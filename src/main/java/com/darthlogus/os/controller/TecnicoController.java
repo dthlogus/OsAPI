@@ -1,6 +1,6 @@
 package com.darthlogus.os.controller;
 
-import com.darthlogus.os.domain.Tecnico;
+import com.darthlogus.os.dtos.TecnicoDTO;
 import com.darthlogus.os.services.TecnicoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,8 +17,8 @@ public class TecnicoController {
     private TecnicoService tecnicoService;
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Tecnico> findById(@PathVariable Integer id) {
-        Tecnico tecnico = tecnicoService.findById(id);
-        return ResponseEntity.ok().body(tecnico);
+    public ResponseEntity<TecnicoDTO> findById(@PathVariable Integer id) {
+        TecnicoDTO tecnicoDTO = new TecnicoDTO(tecnicoService.findById(id));
+        return ResponseEntity.ok().body(tecnicoDTO);
     }
 }
