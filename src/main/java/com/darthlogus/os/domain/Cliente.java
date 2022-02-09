@@ -7,11 +7,13 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
-@Entity
-public class Cliente extends Pessoa implements Serializable{
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
+@Entity
+public class Cliente extends Pessoa implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
+	@JsonIgnore
 	@OneToMany(mappedBy = "cliente")
 	private List<OS> list = new ArrayList<>();
 
@@ -30,5 +32,4 @@ public class Cliente extends Pessoa implements Serializable{
 	public void setList(List<OS> list) {
 		this.list = list;
 	}
-
 }
