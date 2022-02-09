@@ -26,8 +26,7 @@ public class DBService {
     @Autowired
     private OsRepository osRepository;
 
-    @Bean
-    public void instanciaDB(){
+    public void instanciaDB() {
         Tecnico t1 = new Tecnico(null, "Matheus Ribeiro", "446.495.520-79", "(62)99333-6247");
         Cliente c1 = new Cliente(null, "Rogeiro Salvador", "237.489.400-25", "(62) 99357-5897");
         OS os1 = new OS(null, Prioridade.ALTA, "TESTE CREATE OS", Status.ANDAMENTO, t1, c1);
