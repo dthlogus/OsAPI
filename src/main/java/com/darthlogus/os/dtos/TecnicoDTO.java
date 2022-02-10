@@ -5,13 +5,18 @@ import org.hibernate.validator.constraints.br.CPF;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.NotEmpty;
+
 public class TecnicoDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Integer id;
+    @NotEmpty(message = "O campo NOME deve ser preenchido")
     private String nome;
     @CPF
+    @NotEmpty(message = "O campo CPF deve ser preenchido")
     private String cpf;
+    @NotEmpty(message = "O campo TELEFONE deve ser preenchido")
     private String telefone;
 
     public TecnicoDTO() {
