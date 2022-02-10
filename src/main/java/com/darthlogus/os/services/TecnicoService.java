@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 @Service
 public class TecnicoService {
 
@@ -33,6 +35,20 @@ public class TecnicoService {
 		return tecnicoRepository.save(new Tecnico(null, tecnicoDto.getNome(), tecnicoDto.getCpf(), tecnicoDto.getTelefone()));
 	}
 	
+	public Tecnico udpate(Integer id, @Valid TecnicoDTO tecnicoDTO) {
+		Tecnico antigoTecnico = findById(id);
+		
+		if(findByCPF(tecnicoDTO) != null && findByCPF(tecnicoDTO).getId() != id) {
+			throw new DataIntegratyViolationException("CPF já cadastrado na base de dados!");
+		}
+		
+		antigoTecnico.setNome(tecnicoDTO.getNome());
+		antigoTecnico.setCpf(tecnicoDTO.getCpf());
+		antigoTecnico.setTelefone(tecnicoDTO.getTelefone());
+		
+		return tecnicoRepository.save(antigoTecnico);
+	}
+	
     private Tecnico findByCPF(TecnicoDTO tecnicoDto) {
     	Tecnico tecnico = tecnicoRepository.findByCPF(tecnicoDto.getCpf());
     	if(tecnico != null) {
@@ -40,4 +56,5 @@ public class TecnicoService {
     	}
     	return null;
     }
+
 }
