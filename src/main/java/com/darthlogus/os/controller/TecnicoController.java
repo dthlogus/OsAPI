@@ -1,13 +1,11 @@
 package com.darthlogus.os.controller;
 
-import java.net.URI;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import javax.validation.Valid;
-
+import com.darthlogus.os.domain.Tecnico;
+import com.darthlogus.os.dtos.TecnicoDTO;
+import com.darthlogus.os.services.TecnicoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,9 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.darthlogus.os.domain.Tecnico;
-import com.darthlogus.os.dtos.TecnicoDTO;
-import com.darthlogus.os.services.TecnicoService;
+import javax.validation.Valid;
+import java.net.URI;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value = "/tecnicos")
@@ -55,6 +54,12 @@ public class TecnicoController {
     	TecnicoDTO novoTecnicoDTO = new TecnicoDTO(tecnicoService.udpate(id, tecnicoDTO));
     	
     	return ResponseEntity.ok().body(novoTecnicoDTO);
+    }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Integer id){
+        tecnicoService.delete(id);
+        return ResponseEntity.noContent().build();
     }
     
     
