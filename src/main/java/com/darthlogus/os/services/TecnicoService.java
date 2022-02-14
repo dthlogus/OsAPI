@@ -68,6 +68,4 @@ public class TecnicoService {
     	}
     	return null;
     }
-
-
 }
