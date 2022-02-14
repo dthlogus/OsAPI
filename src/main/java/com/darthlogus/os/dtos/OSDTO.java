@@ -3,6 +3,7 @@ package com.darthlogus.os.dtos;
 import com.darthlogus.os.domain.OS;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -15,6 +16,7 @@ public class OSDTO implements Serializable {
     @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
     private LocalDateTime dataFechamento;
     private Integer prioridade;
+    @NotEmpty(message = "O campo observações é obrigatorio.")
     private String observacoes;
     private Integer status;
     private Integer tecnico;
