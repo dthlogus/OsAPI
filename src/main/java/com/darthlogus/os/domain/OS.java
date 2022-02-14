@@ -1,7 +1,8 @@
 package com.darthlogus.os.domain;
 
-import java.time.LocalDateTime;
-import java.util.Objects;
+import com.darthlogus.os.domain.enums.Prioridade;
+import com.darthlogus.os.domain.enums.Status;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,10 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-
-import com.darthlogus.os.domain.enums.Prioridade;
-import com.darthlogus.os.domain.enums.Status;
-import com.fasterxml.jackson.annotation.JsonFormat;
+import java.time.LocalDateTime;
+import java.util.Objects;
 
 
 @Entity
@@ -21,9 +20,9 @@ public class OS {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDateTime dataAbertura;
-    @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDateTime dataFechamento;
     private Integer prioridade;
     private String observacoes;
