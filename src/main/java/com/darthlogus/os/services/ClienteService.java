@@ -56,7 +56,7 @@ public class ClienteService {
 	public void delete(Integer id) {
     	Cliente cliente = findById(id);
     	if (cliente.getList().size() > 0){
-			throw new DataIntegratyViolationException("O Técnico não pode ser excluido, pois existem ordens de serviço atribuidas a ele.");
+			throw new DataIntegratyViolationException("O cliente não pode ser excluido, pois existem ordens de serviço atribuidas a ele.");
 		}
 		clienteRepository.deleteById(id);
 	}
