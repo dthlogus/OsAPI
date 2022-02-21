@@ -2,7 +2,7 @@ package com.darthlogus.os.domain.enums;
 
 public enum Status {
 	ABERTO (0, "ABERTO"),
-	ANDAMENTO (1, "ANDAMENTO"),
+	ANDAMENTO (1, "EM ANDAMENTO"),
 	ENCERRADO (2, "ENCERRADO");
 	
 	private Integer cod;
@@ -14,7 +14,7 @@ public enum Status {
 	}
 
 	public Integer getCod() {
-		return cod;
+		return this.cod;
 	}
 
 	public String getDescricao() {
@@ -33,5 +33,19 @@ public enum Status {
 		}
 		
 		throw new IllegalArgumentException("Status inválido!" + cod);
+	}
+
+	public static Status StringToEnum(String descricao){
+		if (descricao == null){
+			return null;
+		}
+
+		for (Status x : Status.values()){
+			if (descricao.equals(x.getDescricao())){
+				return x;
+			}
+		}
+
+		throw new IllegalArgumentException("Status inválido!: " + descricao);
 	}
 }

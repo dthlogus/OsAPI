@@ -1,6 +1,8 @@
 package com.darthlogus.os.dtos;
 
 import com.darthlogus.os.domain.OS;
+import com.darthlogus.os.domain.enums.Prioridade;
+import com.darthlogus.os.domain.enums.Status;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.validation.constraints.NotEmpty;
@@ -60,8 +62,8 @@ public class OSDTO implements Serializable {
         this.dataFechamento = dataFechamento;
     }
 
-    public Integer getPrioridade() {
-        return prioridade;
+    public String getPrioridade() {
+        return Prioridade.toEnum(this.prioridade).getDescricao();
     }
 
     public void setPrioridade(Integer prioridade) {
@@ -76,8 +78,8 @@ public class OSDTO implements Serializable {
         this.observacoes = observacoes;
     }
 
-    public Integer getStatus() {
-        return status;
+    public String getStatus() {
+        return Status.toEnum(this.status).getDescricao();
     }
 
     public void setStatus(Integer status) {

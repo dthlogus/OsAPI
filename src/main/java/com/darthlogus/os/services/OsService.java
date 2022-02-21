@@ -48,8 +48,8 @@ public class OsService {
         OS os = new OS();
         os.setId(osDto.getId());
         os.setObservacoes(osDto.getObservacoes());
-        os.setPrioridade(Prioridade.toEnum(osDto.getPrioridade()));
-        os.setStatus(Status.toEnum(osDto.getStatus()));
+        os.setPrioridade(Prioridade.StringToEnum(osDto.getPrioridade()));
+        os.setStatus(Status.StringToEnum(osDto.getStatus()));
         os.setTecnico(tecnicoService.findById(osDto.getTecnico()));
         os.setCiente(clienteService.findById(osDto.getCliente()));
         if (os.getStatus().getCod().equals(2)){

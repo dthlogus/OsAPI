@@ -33,6 +33,22 @@ public enum Prioridade {
 			}
 		}
 		
-		throw new IllegalArgumentException("Prioridade inválido!" + cod);
+		throw new IllegalArgumentException("Prioridade inválido!: " + cod);
 	}
+
+	public static Prioridade StringToEnum(String descricao){
+		if (descricao == null){
+			return null;
+		}
+
+		for (Prioridade x : Prioridade.values()){
+			if (descricao.equals(x.getDescricao())){
+				return x;
+			}
+		}
+
+		throw new IllegalArgumentException("Prioridade inválido!: " + descricao);
+	}
+
+
 }
